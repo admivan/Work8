@@ -5,4 +5,9 @@ public class Cat implements Runnable{
     public void run() {
 
     }
+
+    @Override
+    public void jump() {
+
+    }
 }

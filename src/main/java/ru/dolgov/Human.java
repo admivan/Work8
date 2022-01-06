@@ -5,4 +5,9 @@ public class Human implements Runnable{
     public void run() {
 
     }
+
+    @Override
+    public void jump() {
+
+    }
 }
