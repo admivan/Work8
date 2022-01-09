@@ -6,26 +6,36 @@ public class Main {
     static Random random = new Random();
 
     public static void main(String[] args) {
+        //Генерация Человека, Кота, Робота
         Runnable[] runnables = new Runnable[2];
         for (int i = 0; i < runnables.length; i++) {
             runnables[i] = generateRunnable();
         }
+        //Генерация препятствия
         Obstacle[] obstacles = new Obstacle[6];
         for (int i = 0; i < obstacles.length; i++) {
             obstacles[i] = generateObstacle();
         }
 
-
+        /*
+        Выбор участника по порядку
+         */
         for (int i = 0; i < runnables.length; i++) {
-            boolean result = true;
+            boolean result = true; // Объявления переменной результата
+            //Проходим по всем препятствиям каждым игроком
             for (int j = 0; j < obstacles.length; j++) {
-                result = obstacles[j].moving(runnables[i]);
 
+                result = obstacles[j].moving(runnables[i]);//Вызываем метод moving на припятские
+                /*
+                Если участник не прошел препятствие выходим с цикла перебора препятствий
+                 */
                 if (!result) {
                     break;
                 }
             }
-
+            /*
+            Вывод прошел ли участник препятствие
+             */
             if (result) {
                 System.out.println(runnables[i] + " До шел до финиша!");
             } else {
@@ -35,6 +45,10 @@ public class Main {
 
     }
 
+    /**
+     * Генерация Человека, Кота, Робота
+     * @return Возвращаем массив
+     */
     public static Runnable generateRunnable() {
         String[] nameshuman = new String[]{"Анатолий", "Глеб", "Клим", "Мартин", "Лазарь", "Владлен", "Клим", "Панкратий", "Рубен", "Герман"};
         String[] namesrobot = new String[]{"Бейлис", "Бильбо", "Бывалый", "Воля", "Виндоус", "Винтер", "Винтик", "Вихрь", "Вольт", " Гастон"};
@@ -54,6 +68,10 @@ public class Main {
         return null;
     }
 
+    /**
+     * Генерация препятствия
+     * @return Возвращаем массив
+     */
     public static Obstacle generateObstacle() {
 
         int typeIndex = random.nextInt(2);

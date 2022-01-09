@@ -2,31 +2,36 @@ package ru.dolgov;
 
 public class Wall implements Obstacle {
     private String name;
-    private int height;
+    private int length;
 
-    public Wall(String name, int height) {
+    public Wall(String name, int length) {
         this.name = name;
-        this.height = height;
+        this.length = length;
     }
 
-
-    @Override
-    public int height() {
-        return height;
-    }
-
+    /**
+     * Возвращаем высоту стены
+     *
+     * @return
+     */
     @Override
     public int length() {
-        return 0;
+        return length;
     }
 
+    /**
+     * Метод проверки прошел ли участник препятствие
+     *
+     * @param runnable принимаем участника
+     * @return возвращаем true прошел false не прошел
+     */
     @Override
     public boolean moving(Runnable runnable) {
-        System.out.println(name + " высота: " + height);
+        System.out.println(name + " высота: " + length);
 
         runnable.jump();
 
-        if (height() <= runnable.getJumpHeight()) {
+        if (length() <= runnable.getJumpHeight()) {
             System.out.println("Прыжок успешен");
 
             return true;
