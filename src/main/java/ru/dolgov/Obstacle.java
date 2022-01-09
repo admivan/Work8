@@ -1,6 +1,9 @@
 package ru.dolgov;
 
-public interface Obstacle {
-    void height();
-    void wight();
+interface Obstacle {
+    int height();
+
+    int length();
+
+    boolean moving(Runnable runnable);
 }
